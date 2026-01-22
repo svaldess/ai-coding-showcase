@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tratamiento de Fertilidad - Finanzas</title>
+    <link rel="stylesheet" href="finance-styles.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>💕 Gestor de Tratamiento de Fertilidad</h1>
+            <p class="subtitle">Control financiero para San y Pine</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container main-content">
+
+        <!-- Summary Cards -->
+        <section class="summary-section">
+            <div class="summary-card total-card">
+                <div class="card-icon">💰</div>
+                <div class="card-content">
+                    <h3>Total del Tratamiento</h3>
+                    <p class="amount" id="total-treatment">$0</p>
+                </div>
+            </div>
+
+            <div class="summary-card paid-card">
+                <div class="card-icon">✅</div>
+                <div class="card-content">
+                    <h3>Total Pagado</h3>
+                    <p class="amount" id="total-paid">$0</p>
+                </div>
+            </div>
+
+            <div class="summary-card pending-card">
+                <div class="card-icon">⏳</div>
+                <div class="card-content">
+                    <h3>Total Pendiente</h3>
+                    <p class="amount" id="total-pending">$0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Person Contributions -->
+        <section class="contributions-section">
+            <h2>💑 Contribuciones por Persona</h2>
+            <div class="contributions-grid">
+                <div class="contribution-card san-card">
+                    <div class="person-header">
+                        <span class="person-icon">👨</span>
+                        <h3>San</h3>
+                    </div>
+                    <p class="contribution-amount" id="san-contribution">$0</p>
+                    <p class="contribution-label">Total aportado</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill san-progress" id="san-progress"></div>
+                    </div>
+                </div>
+
+                <div class="contribution-card pine-card">
+                    <div class="person-header">
+                        <span class="person-icon">👩</span>
+                        <h3>Pine</h3>
+                    </div>
+                    <p class="contribution-amount" id="pine-contribution">$0</p>
+                    <p class="contribution-label">Total aportado</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill pine-progress" id="pine-progress"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operations Management -->
+        <section class="operations-section">
+            <div class="section-header">
+                <h2>🏥 Operaciones / Fases del Tratamiento</h2>
+                <button id="add-operation-btn" class="btn-primary">+ Agregar Operación</button>
+            </div>
+
+            <!-- Add Operation Form (Hidden by default) -->
+            <div id="operation-form" class="form-card hidden">
+                <h3>Nueva Operación</h3>
+                <form id="new-operation-form">
+                    <div class="form-group">
+                        <label>Nombre de la Operación *</label>
+                        <input type="text" id="op-name" placeholder="Ej: Extracción de Óvulos 1" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Costo de Medicamentos</label>
+                            <input type="number" id="op-meds" placeholder="0" min="0" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Costo de Operación</label>
+                            <input type="number" id="op-procedure" placeholder="0" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Costo Total</label>
+                        <input type="number" id="op-total" placeholder="Calculado automáticamente" readonly>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Guardar Operación</button>
+                        <button type="button" id="cancel-operation" class="btn-secondary">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Operations List -->
+            <div id="operations-list" class="operations-list"></div>
+        </section>
+
+        <!-- Payments Management -->
+        <section class="payments-section">
+            <div class="section-header">
+                <h2>💳 Registrar Pago</h2>
+            </div>
+
+            <div class="form-card">
+                <form id="payment-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Fecha del Pago *</label>
+                            <input type="date" id="payment-date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Monto *</label>
+                            <input type="number" id="payment-amount" placeholder="0.00" min="0" step="0.01" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>¿Quién pagó? *</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="payer" value="San" required>
+                                    <span>👨 San</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="payer" value="Pine" required>
+                                    <span>👩 Pine</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Para qué Operación *</label>
+                            <select id="payment-operation" required>
+                                <option value="">Selecciona una operación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notas (Opcional)</label>
+                        <input type="text" id="payment-notes" placeholder="Ej: Pago mensual #1">
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-large">💾 Registrar Pago</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Payment History -->
+        <section class="history-section">
+            <div class="section-header">
+                <h2>📋 Historial de Pagos</h2>
+                <div class="history-filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="San">San</button>
+                    <button class="filter-btn" data-filter="Pine">Pine</button>
+                </div>
+            </div>
+
+            <div id="payments-list" class="payments-list"></div>
+        </section>
+
+        <!-- Data Management -->
+        <section class="data-section">
+            <div class="section-header">
+                <h2>⚙️ Gestión de Datos</h2>
+            </div>
+
+            <div class="data-actions">
+                <button id="export-data" class="btn-secondary">📥 Exportar Datos (JSON)</button>
+                <button id="import-data" class="btn-secondary">📤 Importar Datos</button>
+                <button id="clear-all-data" class="btn-danger">🗑️ Borrar Todos los Datos</button>
+            </div>
+            <input type="file" id="import-file" accept=".json" style="display: none;">
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>💕 Con amor para San y Pine • Los datos se guardan localmente en tu navegador</p>
+    </footer>
+
+    <script src="finance-script.js"></script>
+</body>
+</html>
