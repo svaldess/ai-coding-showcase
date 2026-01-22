@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Coding Showcase - Interactive demonstrations of AI-assisted development">
+    <title>AI Coding Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">AI Coding Showcase</h1>
+            <p class="hero-subtitle">Interactive demonstrations of modern web development with AI assistance</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">AI-Assisted</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">5+</span>
+                    <span class="stat-label">Features</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Dependencies</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Interactive Demos</h2>
+
+            <!-- Calculator -->
+            <div class="feature-card">
+                <div class="feature-header">
+                    <h3>🧮 Smart Calculator</h3>
+                    <button class="feature-toggle" data-target="calculator">Show</button>
+                </div>
+                <div id="calculator" class="feature-content">
+                    <div class="calculator">
+                        <div class="calculator-display" id="calc-display">0</div>
+                        <div class="calculator-buttons">
+                            <button class="calc-btn calc-btn-clear" data-action="clear">C</button>
+                            <button class="calc-btn calc-btn-operator" data-action="delete">←</button>
+                            <button class="calc-btn calc-btn-operator" data-value="%">%</button>
+                            <button class="calc-btn calc-btn-operator" data-value="/">÷</button>
+
+                            <button class="calc-btn" data-value="7">7</button>
+                            <button class="calc-btn" data-value="8">8</button>
+                            <button class="calc-btn" data-value="9">9</button>
+                            <button class="calc-btn calc-btn-operator" data-value="*">×</button>
+
+                            <button class="calc-btn" data-value="4">4</button>
+                            <button class="calc-btn" data-value="5">5</button>
+                            <button class="calc-btn" data-value="6">6</button>
+                            <button class="calc-btn calc-btn-operator" data-value="-">−</button>
+
+                            <button class="calc-btn" data-value="1">1</button>
+                            <button class="calc-btn" data-value="2">2</button>
+                            <button class="calc-btn" data-value="3">3</button>
+                            <button class="calc-btn calc-btn-operator" data-value="+">+</button>
+
+                            <button class="calc-btn calc-btn-zero" data-value="0">0</button>
+                            <button class="calc-btn" data-value=".">.</button>
+                            <button class="calc-btn calc-btn-equals" data-action="equals">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Todo List -->
+            <div class="feature-card">
+                <div class="feature-header">
+                    <h3>✓ Task Manager</h3>
+                    <button class="feature-toggle" data-target="todo">Show</button>
+                </div>
+                <div id="todo" class="feature-content">
+                    <div class="todo-app">
+                        <div class="todo-input-container">
+                            <input type="text" id="todo-input" placeholder="Add a new task..." class="todo-input">
+                            <button id="add-todo" class="btn-primary">Add</button>
+                        </div>
+                        <div class="todo-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="active">Active</button>
+                            <button class="filter-btn" data-filter="completed">Completed</button>
+                        </div>
+                        <ul id="todo-list" class="todo-list"></ul>
+                        <div class="todo-stats">
+                            <span id="todo-count">0 tasks</span>
+                            <button id="clear-completed" class="btn-text">Clear completed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Palette Generator -->
+            <div class="feature-card">
+                <div class="feature-header">
+                    <h3>🎨 Color Palette Generator</h3>
+                    <button class="feature-toggle" data-target="colors">Show</button>
+                </div>
+                <div id="colors" class="feature-content">
+                    <div class="color-generator">
+                        <button id="generate-palette" class="btn-primary">Generate New Palette</button>
+                        <div id="color-palette" class="color-palette"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Demo - Random Quote Generator -->
+            <div class="feature-card">
+                <div class="feature-header">
+                    <h3>💬 Quote Generator</h3>
+                    <button class="feature-toggle" data-target="quotes">Show</button>
+                </div>
+                <div id="quotes" class="feature-content">
+                    <div class="quote-generator">
+                        <div class="quote-display">
+                            <blockquote id="quote-text">Click the button to generate an inspiring quote!</blockquote>
+                            <cite id="quote-author"></cite>
+                        </div>
+                        <button id="generate-quote" class="btn-primary">New Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Speed Test -->
+            <div class="feature-card">
+                <div class="feature-header">
+                    <h3>⌨️ Typing Speed Test</h3>
+                    <button class="feature-toggle" data-target="typing">Show</button>
+                </div>
+                <div id="typing" class="feature-content">
+                    <div class="typing-test">
+                        <div class="typing-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">WPM</span>
+                                <span class="stat-value" id="wpm">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Accuracy</span>
+                                <span class="stat-value" id="accuracy">100%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Time</span>
+                                <span class="stat-value" id="timer">60s</span>
+                            </div>
+                        </div>
+                        <div id="typing-text" class="typing-text"></div>
+                        <textarea id="typing-input" class="typing-input" placeholder="Click here and start typing..." disabled></textarea>
+                        <button id="start-typing" class="btn-primary">Start Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built with AI assistance • <a href="https://github.com/svaldess/ai-coding-showcase" target="_blank">View on GitHub</a></p>
+            <p class="footer-note">Showcasing modern web development techniques</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
