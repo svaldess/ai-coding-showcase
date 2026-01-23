@@ -363,7 +363,7 @@ class FinanceManager {
 
         container.innerHTML = filteredPayments.map(payment => `
             <div class="payment-item" data-payer="${payment.payer}">
-                <div class="payment-icon">${payment.payer === 'San' ? '👨' : '👩'}</div>
+                <div class="payment-icon">${payment.payer === 'San' ? '👩' : '👨'}</div>
                 <div class="payment-info">
                     <h4>${this.escapeHtml(payment.operationName)}</h4>
                     <div class="payment-meta">
